@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: rt
+  namespace: ncom
+spec:
+  selector:
+    matchLabels:
+      rs: one
+  replicas: 1
+  template:
+    metadata:
+      name: pod
+      labels:
+        rs: one
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+      tolerations:
+        - key: "lt"
+          operator: "Equal"
+          value: "no"
+          effect: NoExecute

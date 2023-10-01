@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  selector:
+    matchLabels:
+      rs: one
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      name: ftpod
+      labels:
+        rs: one
+    spec:
+      containers:
+        - name: simple-webapp
+          image: kodekloud/webapp-color:v2
+          ports:
+            - containerPort: 8080
+  replicas: 4

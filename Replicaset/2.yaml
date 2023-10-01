@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: tar
+spec:
+  selector:
+    matchLabels:
+      rs: one
+  replicas: 1
+  template:
+    metadata:
+      name: pod
+      labels:
+        rs: one
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+  
+    
+      

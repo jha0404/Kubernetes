@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: rs 
+spec:
+  selector:
+    matchLabels:
+      app: key
+  replicas: 1
+  template:
+    metadata:
+      name: nginx
+      labels:
+        app: key
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: size
+                    operator: In 
+                    values:
+                      - "large"
+                      - "medium"

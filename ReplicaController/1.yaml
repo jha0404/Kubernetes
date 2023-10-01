@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: myfirstrs
+  labels:
+    rs: first
+spec:
+  template:
+    metadata:
+      name: firstrspod
+      labels:
+        rs: first
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+  replicas: 4
