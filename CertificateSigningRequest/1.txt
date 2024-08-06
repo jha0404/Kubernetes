@@ -1,0 +1,27 @@
+Below is the step for creation of Certificate Signing Requests:
+
+1. Create private key and csr for user:
+    openssl genrsa -out jha.key 2048
+    openssl req -new -key jha.key -out jha.csr -subj "/CN=jha"
+
+Checking certificate
+2. kubectl get csr
+
+Approving certificates
+3. kubectl certificate approve jha
+
+Getting .crt file after approving
+
+4. kubectl get csr jha -o jsonpath='{.status.certificate}'| base64 -d > jha.crt
+
+Create Role and RoleBinding:
+as in this case created with pod reader role  in kube-system namespace.
+
+
+
+
+
+----------- kube config set ---------------------
+kubectl config set-credentials jha --client-key=jha.key --client-certificate=jha.crt --embed-certs=true
+
+kubectl config set-context jha --cluster=kubernetes --user=jha
