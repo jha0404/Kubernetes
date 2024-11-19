@@ -9,11 +9,11 @@ spec:
     name: nginx
     volumeMounts:
       - mountPath: /tmp/secrets
-        name: projected-volume-for-service-account-blog # This part is done for mounting service account token as file inside container option1: Projected volume way
+        name: projected-volume-for-service-account-blog
   volumes:
   - name: projected-volume-for-service-account-blog
     projected:
       sources:
       - serviceAccountToken:
           path: service-account-token-as-file
-          expirationSeconds: 600
+          expirationSeconds: 180
