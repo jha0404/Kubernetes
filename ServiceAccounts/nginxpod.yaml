@@ -16,4 +16,4 @@ spec:
       sources:
       - serviceAccountToken:
           path: service-account-token-as-file
-          expirationSeconds: 180
+          expirationSeconds: 600
