@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: internal-policy
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      name: internal
+  policyTypes:
+  - Egress
+  ingress:
+  - to:
+    - podSelector:
+        matchLabels:
+         name: payroll
+    ports:
+    - protocol: TCP
+      port: 80

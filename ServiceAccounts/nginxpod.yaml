@@ -3,15 +3,15 @@ kind: Pod
 metadata:
   name: nginx
 spec:
-  serviceAccountName: pod-reader
+  serviceAccountName: my-serviceaccount
   containers:
   - image: nginx
     name: nginx
     volumeMounts:
       - mountPath: /tmp/secrets
-        name: projected-volume-for-service-account-blog
+        name: projected-volume-for-my-serviceaccount
   volumes:
-  - name: projected-volume-for-service-account-blog
+  - name: projected-volume-for-my-serviceaccount
     projected:
       sources:
       - serviceAccountToken:

@@ -25,3 +25,7 @@ as in this case created with pod reader role  in kube-system namespace.
 kubectl config set-credentials jha --client-key=jha.key --client-certificate=jha.crt --embed-certs=true
 
 kubectl config set-context jha --cluster=kubernetes --user=jha
+
+
+References:
+https://kubernetes.io/docs/reference/access-authn-authz/certificate-signing-requests/#normal-user
